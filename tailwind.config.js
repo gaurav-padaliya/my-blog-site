@@ -1,7 +1,8 @@
 module.exports = {
 
     plugins: [
-        require('flowbite/plugin')
+        require('flowbite/plugin'),
+        require('flowbite-typography'),
     ],
     theme: {
         extend: {},
@@ -14,5 +15,6 @@ module.exports = {
         "./plugins/**/*.{js,ts}",
         "./nuxt.config.{js,ts}",
       ],
+      darkMode: 'class',
 
 }
