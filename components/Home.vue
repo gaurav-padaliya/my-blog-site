@@ -84,7 +84,7 @@
 }
 .container {
   padding-top: 200px;
-  min-width: 100%;
+  min-width: 90%;
   position: relative;
   height: 100vh;
   color: red;
