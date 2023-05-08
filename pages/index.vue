@@ -1,13 +1,13 @@
 <template>
-  <Home/>
+  <Blogs  />
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-import Home from '~/components/Home.vue';
+import Blogs from '~/components/Blogs.vue';
 
 export default Vue.extend({
-    name: "IndexPage",
-    components: { Home }
+  name: "blog",
+  components: { Blogs }
 })
 </script>

@@ -99,6 +99,12 @@
               ></div>
             </div>
           </div>
+
+          <!-- comments -->
+          <div class="max-w-3xl mx-auto px-4">
+            <h1 class="text-3xl font-bold mb-4">Comments</h1>
+            <Comments :comments="comments" @new-comment="addComment" />
+          </div>
           <!-- Modal footer -->
           <div
             class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600"
@@ -125,8 +131,34 @@
 </template>
 
 <script>
+import Comments from "./Comments.vue";
+const commentsData = [{
+  id: 1,
+  text: 'This is a top-level comment',
+  children: [
+    {
+      id: 2,
+      text: 'This is a reply to the top-level comment',
+      children: []
+    },
+    {
+      id: 3,
+      text: 'This is another reply to the top-level comment',
+      children: [
+        {
+          id: 4,
+          text: 'This is a reply to the second-level comment',
+          children: []
+        }
+      ]
+    }
+  ]
+}]
 export default {
   name: "models",
+  components: {
+    Comments
+  },
   props: {
     item: {
       source: [Object],
@@ -140,12 +172,27 @@ export default {
     },
   },
   data() {
-    return {};
+    return {comments: commentsData};
   },
   methods: {
     ReadAricle() {
       window.open(this.item.url);
     },
+    addComment(comment) {
+      const addCommentToTree = (node) => {
+        if (node.id === comment.parentId) {
+          node.children.push(comment)
+        } else {
+          node.children.forEach(addCommentToTree)
+        }
+      }
+
+      if (comment.parentId) {
+        addCommentToTree(this.comments)
+      } else {
+        this.comments.children.push(comment)
+      }
+    }
   },
 };
 </script>
