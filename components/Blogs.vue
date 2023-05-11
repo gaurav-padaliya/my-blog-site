@@ -1,8 +1,8 @@
 <template>
   <div>
-    <header class="bg-gray-900 text-white dark:bg-gray-900">
+    <header class="bg-gray-400 text-white dark:bg-gray-900">
       <div class="container mx-auto py-4">
-        <nav class="bg-gray-50 dark:bg-gray-800">
+        <nav class="bg-gray-50 bg-gray-100 dark:bg-gray-800">
           <div class="max-w-screen-xl px-4 py-3 mx-auto">
             <div class="flex items-center">
               <ul class="flex flex-row font-medium mt-0 mr-6 space-x-8 text-sm">
@@ -109,7 +109,8 @@
           <div class="mb-8">
             <h2 class="text-2xl font-bold mb-2">Latest Posts</h2>
             <div class="flex flex-wrap justify-around m-4 ">
-              <Post v-for="list in listItems" :key="list.id" :item = "list"/>
+              <Post v-for="(list ,index) in listItems" :key="index" :item = "list" :id="list.id" :changeModelData="handleChangeModel" />
+              <Models :item ="modelData" />
             </div>
           </div>
           
@@ -164,6 +165,7 @@ export default {
       categoryChange:"general",
       tagChange:"in",
       loading:false,
+      modelData:{},
     };
   },
   created() {
@@ -183,6 +185,9 @@ export default {
       });
   },
   methods:{
+    handleChangeModel(item){
+      this.modelData = item
+    },
     changeTag(tag){
       this.tagChange = tag 
     },

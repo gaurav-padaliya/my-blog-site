@@ -160,16 +160,7 @@ export default {
     Comments
   },
   props: {
-    item: {
-      source: [Object],
-      author: String,
-      content: String,
-      description: String,
-      publishedAt: Date,
-      title: String,
-      url: String,
-      urlToImage: String,
-    },
+    item: Object,
   },
   data() {
     return {comments: commentsData};
