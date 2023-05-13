@@ -77,7 +77,7 @@
           <label
             for="visitors"
             class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-700"
-            >Unique visitors (per month)</label
+            >Web page visitors </label
           >
           <input
             type="number"
